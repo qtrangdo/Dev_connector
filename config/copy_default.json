@@ -1,4 +1,5 @@
-// Replace user and password
+// Replace user, password, secret token
 {
-  "mongoURI": "mongodb+srv://YOUR_USER_NAME:YOUR_PASSWORD@devconnector-hwtns.mongodb.net/test?retryWrites=true&w=majority"
+  "mongoURI": "mongodb+srv://YOUR_USER_NAME:YOUR_PASSWORD@devconnector-hwtns.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "YOUR_SECRET_TOKEN"
 }
