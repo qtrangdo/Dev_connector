@@ -1,5 +1,7 @@
 // Replace user, password, secret token
 {
   "mongoURI": "mongodb+srv://YOUR_USER_NAME:YOUR_PASSWORD@devconnector-hwtns.mongodb.net/test?retryWrites=true&w=majority",
-  "jwtSecret": "YOUR_SECRET_TOKEN"
+  "jwtSecret": "YOUR_SECRET_TOKEN",
+  "githubClientId": "YOUR_ID",
+  "githubSecret": "YOUR_SECRET_TOKEN"
 }
