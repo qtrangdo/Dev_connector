@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "devstart": "nodemon server.js"
+    "devstart": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "npm run devstart & npm run client"
   },
   "author": "",
   "license": "ISC",
