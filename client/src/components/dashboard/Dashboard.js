@@ -24,7 +24,7 @@ const Dashboard = ({getCurrentProfile, user, profile, loading}) => {
         <DashboardActions /> :
         <Fragment>
           <p>You have not yet setup a profile. Please add some info</p>
-          <Link to='/creat-profile' className="btn btn-primary my-1" > Create Profile</Link>
+          <Link to='/create-profile' className="btn btn-primary my-1" > Create Profile</Link>
         </Fragment>
       }
     </Fragment>
