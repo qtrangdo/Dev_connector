@@ -3,31 +3,37 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import DashboardActions from './DashboardActions';
+import Experience from './Experience';
 import { getCurrentProfile } from '../../actions/profile';
 import Spinner from '../layout/Spinner';
 
-const Dashboard = ({getCurrentProfile, user, profile, loading}) => {
+const Dashboard = ({ getCurrentProfile, user, profile, loading }) => {
   useEffect(() => {
     getCurrentProfile();
-  },[getCurrentProfile])
+  }, [getCurrentProfile])
 
   return (
-    loading && profile === null 
-    ? <Spinner /> 
-    : <Fragment>
-      <h1 className="large text-primary">Dashboard</h1> 
-      <p className="lead">
-        <i className="fas fa-user"></i>{' '}
-        Welcome {user && user.name}
-      </p>
-      {profile !== null ? 
-        <DashboardActions /> :
-        <Fragment>
-          <p>You have not yet setup a profile. Please add some info</p>
-          <Link to='/create-profile' className="btn btn-primary my-1" > Create Profile</Link>
-        </Fragment>
-      }
-    </Fragment>
+    loading && profile === null
+      ? <Spinner />
+      : <Fragment>
+        <h1 className="large text-primary">Dashboard</h1>
+        <p className="lead">
+          <i className="fas fa-user"></i>{' '}
+          Welcome {user && user.name}
+        </p>
+        {profile !== null 
+          ?
+          <Fragment>
+            <DashboardActions />
+            <Experience experience={profile.experience}/>
+          </Fragment>
+          :
+          <Fragment>
+            <p>You have not yet setup a profile. Please add some info</p>
+            <Link to='/create-profile' className="btn btn-primary my-1" > Create Profile</Link>
+          </Fragment>
+        }
+      </Fragment>
   )
 }
 
@@ -44,4 +50,4 @@ const mapStateToProps = state => ({
   loading: state.profile.loading
 })
 
-export default connect(mapStateToProps, {getCurrentProfile})(Dashboard);
+export default connect(mapStateToProps, { getCurrentProfile })(Dashboard);
