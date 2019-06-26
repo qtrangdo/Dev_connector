@@ -113,7 +113,7 @@ export const addEducation = (formData, history) => async dispatch => {
 // Delete Experience by ID
 export const deleteExperience = id => async dispatch => {
   try {
-    const res = await axios.delete(`api/profile/expereience/${id}`);
+    const res = await axios.delete(`api/profile/experience/${id}`);
     dispatch({
       type: UPDATE_PROFILE,
       payload: res.data
