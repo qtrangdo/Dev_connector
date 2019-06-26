@@ -3,7 +3,9 @@ import { setAlert } from './alert';
 import {
   GET_PROFILE,
   PROFILE_ERROR,
-  UPDATE_PROFILE
+  UPDATE_PROFILE,
+  DELETE_ACCOUNT,
+  CLEAR_PROFILE
 } from './types';
 
 // Get current users profile
@@ -139,5 +141,22 @@ export const deleteEducation = id => async dispatch => {
       type: PROFILE_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status }
     })
+  }
+}
+
+// Delete Current account & profile
+export const deleteAccount = () => async dispatch => {
+  if (window.confirm('Are you sure about deleting this account? This action CANNOT be undone.')) {
+    try {
+      await axios.delete('api/profile');
+      dispatch({ type: CLEAR_PROFILE });
+      dispatch({ type: DELETE_ACCOUNT });
+      dispatch(setAlert('Your account has been permanently deleted'))
+    } catch (err) {
+      dispatch({
+        type: PROFILE_ERROR,
+        payload: { msg: err.response.statusText, status: err.response.status }
+      })
+    }
   }
 }
