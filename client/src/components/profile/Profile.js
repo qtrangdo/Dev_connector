@@ -8,6 +8,7 @@ import ProfileTop from './ProfileTop';
 import ProfileAbout from './ProfileAbout';
 import ProfileExperience from './ProfileExperience';
 import ProfileEducation from './ProfileEducation';
+import ProfileGithub from './ProfileGithub';
 
 const Profile = ({ getProfileById, profile, loading, auth, match }) => {
   useEffect(() => {
@@ -30,11 +31,11 @@ const Profile = ({ getProfileById, profile, loading, auth, match }) => {
               {
                 profile.experience.length > 0 ? (
                   <Fragment>
-                    {profile.experience.map(exp => <ProfileExperience key={exp._id} experience={exp}/>)}
+                    {profile.experience.map(exp => <ProfileExperience key={exp._id} experience={exp} />)}
                   </Fragment>
                 ) : (
-                  <h4>No experience credentials</h4>
-                )
+                    <h4>No experience credentials</h4>
+                  )
               }
             </div>
             <div className="profile-edu bg-white p-2">
@@ -42,14 +43,17 @@ const Profile = ({ getProfileById, profile, loading, auth, match }) => {
               {
                 profile.education.length > 0 ? (
                   <Fragment>
-                    {profile.education.map(edu => <ProfileEducation key={edu._id} education={edu}/>)}
+                    {profile.education.map(edu => <ProfileEducation key={edu._id} education={edu} />)}
                   </Fragment>
                 ) : (
-                  <h4>No education credentials</h4>
-                )
+                    <h4>No education credentials</h4>
+                  )
               }
             </div>
           </div>
+          {profile.githubusername && (
+              <ProfileGithub username={profile.githubusername} />
+            )}
         </Fragment>
       )}
     </div>
