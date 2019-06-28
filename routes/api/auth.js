@@ -54,8 +54,8 @@ router.post('/',
           id: user.id
         }
       }
-      // switch expire to 3600s for deployment ***
-      jwt.sign(payload, config.get('jwtSecret'), { expiresIn: 360000000 }, (err, token) => {
+      
+      jwt.sign(payload, config.get('jwtSecret'), { expiresIn: 3600 }, (err, token) => {
         if (err) throw err;
         res.json({ token })
       })
