@@ -6,6 +6,7 @@ import {
   UPDATE_LIKES,
   DELETE_POST,
   ADD_POST,
+  GET_POST
 } from './types';
 
 // Get all posts
@@ -96,3 +97,19 @@ export const addPost = formData => async dispatch => {
     });
   }
 };
+
+// Get post by id
+export const getPost = post_id => async dispatch => {
+  try {
+    const res = await axios.get(`/api/posts/${post_id}`);
+    dispatch({
+      type: GET_POST,
+      payload: res.data
+    })
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    })
+  }
+}
