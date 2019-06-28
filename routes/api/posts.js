@@ -103,7 +103,7 @@ router.put('/like/:post_id', auth, async (req, res) => {
     const post = await Post.findById(req.params.post_id);
 
     // Check if post has been liked by user before this
-    if (post.likes.filter(like => like.user.toString = req.user.id).length) {
+    if (post.likes.filter(like => like.user.toString() === req.user.id).length) {
       return res.status(400).json({ msg: 'Post already liked' });
     }
 
@@ -121,11 +121,12 @@ router.put('/like/:post_id', auth, async (req, res) => {
 // @desc    Unlike a post
 // @access  Private
 router.put('/unlike/:post_id', auth, async (req, res) => {
+  console.log('api')
   try {
     const post = await Post.findById(req.params.post_id);
 
     // Check if post has been liked by user before this
-    if (post.likes.filter(like => like.user.toString() = req.user.id).length === 0) {
+    if (post.likes.filter(like => like.user.toString() === req.user.id).length === 0) {
       return res.status(400).json({ msg: 'Post has not yet been liked' });
     }
     // Get the remove index
